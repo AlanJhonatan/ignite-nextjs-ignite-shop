@@ -30,42 +30,17 @@ export default function Home({ products }: HomeProps) {
   
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
-      <pre>{JSON.stringify(products)}</pre>
-      <Product className="keen-slider__slide">
-        <Image src={shirt1} width={520} height={480} alt=""  />
-
-        <footer>
-          <strong>Camiseta X</strong>
-          <span>R$ 79,90</span>
-        </footer>
-      </Product>
-
-      <Product className="keen-slider__slide">
-        <Image src={shirt2} width={520} height={480} alt=""  />
-
-        <footer>
-          <strong>Camiseta X</strong>
-          <span>R$ 79,90</span>
-        </footer>
-      </Product>
-
-      <Product className="keen-slider__slide">
-        <Image src={shirt3} width={520} height={480} alt=""  />
-
-        <footer>
-          <strong>Camiseta X</strong>
-          <span>R$ 79,90</span>
-        </footer>
-      </Product>
-      
-      <Product className="keen-slider__slide">
-        <Image src={shirt3} width={520} height={480} alt=""  />
-
-        <footer>
-          <strong>Camiseta X</strong>
-          <span>R$ 79,90</span>
-        </footer>
-      </Product>
+      {products.map(product => {
+        return (
+          <Product className="keen-slider__slide" key={product.id}>
+            <Image src={product.imageUrl} width={520} height={480} alt=""  />
+            <footer>
+              <strong>{product.name}</strong>
+              <span>{product.price}</span>
+            </footer>
+          </Product>
+        )
+      })}
     </HomeContainer>
   )
 }
