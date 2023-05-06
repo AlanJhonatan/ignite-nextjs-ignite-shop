@@ -16,8 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     cancel_url: cancelUrl,
   })
 
-  console.log(checkoutSession)
-  
   return res.status(201).json({
     checkoutUrl: checkoutSession.url
   })
